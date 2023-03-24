@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class CoachController {
 
     private Coach myCoach;
+    private Coach anotherCoach;
 
     @Autowired
-    public CoachController(@Qualifier("baseballCoach") Coach theCoach) {
+    public CoachController(@Qualifier("baseballCoach") Coach theCoach, @Qualifier("baseballCoach") Coach theAnotherCoach) {
         System.out.println("In constructor: " + getClass().getSimpleName());
         myCoach = theCoach;
+        anotherCoach = theAnotherCoach;
     }
 
     // use setter method for DI
@@ -26,5 +28,10 @@ public class CoachController {
     @GetMapping("/daily-workout")
     public String getDailyWorkout() {
         return myCoach.getDailyWorkout();
+    }
+
+    @GetMapping("/check-bean-scope")
+    public String check() {
+        return "Comparing beans: myCoach == anotherCoach, " + (myCoach == anotherCoach);
     }
 }
