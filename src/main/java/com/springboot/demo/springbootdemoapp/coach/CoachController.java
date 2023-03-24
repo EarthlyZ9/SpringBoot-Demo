@@ -14,6 +14,13 @@ public class CoachController {
         myCoach = theCoach;
     }
 
+    // use setter method for DI
+
+//    @Autowired
+//    public void setCoach(Coach theCoach) {
+//        myCoach = theCoach;
+//    }
+
     @GetMapping("/daily-workout")
     public String getDailyWorkout() {
         return myCoach.getDailyWorkout();
