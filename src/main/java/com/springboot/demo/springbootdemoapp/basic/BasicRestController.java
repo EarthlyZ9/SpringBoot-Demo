@@ -1,4 +1,4 @@
-package com.springboot.demo.springbootdemoapp.rest;
+package com.springboot.demo.springbootdemoapp.basic;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
