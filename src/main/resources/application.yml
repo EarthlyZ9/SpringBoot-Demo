@@ -25,6 +25,8 @@ spring:
     user:
       name: "linda2927"
       password: "12345678"
+  main:
+    lazy-initialization: true
 
 # Custom properties
 myname: "EarthlyZ9"
