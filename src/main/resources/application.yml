@@ -1,0 +1,30 @@
+info:
+  app:
+    name: "Spring Boot Demo"
+    description: "Spring Boot Demo App"
+    version: "1.0.0"
+# Use wildcard * to expose all endpoints under 'actuator'
+# Can expose individual endpoints with a comma-delimited list
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+#        exclude: threaddump,env
+  info:
+    env:
+      enabled: true
+
+server:
+  servlet:
+    context-path: "/api"
+
+# Spring Security
+spring:
+  security:
+    user:
+      name: "linda2927"
+      password: "12345678"
+
+# Custom properties
+myname: "EarthlyZ9"
