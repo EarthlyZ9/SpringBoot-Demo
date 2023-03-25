@@ -1,7 +1,7 @@
 info:
   app:
-    name: "Spring Boot Demo"
-    description: "Spring Boot Demo App"
+    name: Spring Boot Demo
+    description: Spring Boot Demo App
     version: "1.0.0"
 # Use wildcard * to expose all endpoints under 'actuator'
 # Can expose individual endpoints with a comma-delimited list
@@ -23,10 +23,18 @@ server:
 spring:
   security:
     user:
-      name: "linda2927"
+      name: linda2927
       password: "12345678"
+  datasource:
+    url: "jdbc:mysql://localhost:3306/student_tracker"
+    username: root
+    password: linda2927
 #  main:
 #    lazy-initialization: true
 
+logging:
+  level:
+    root: warn
+
 # Custom properties
-myname: "EarthlyZ9"
+myname: EarthlyZ9
