@@ -29,12 +29,21 @@ spring:
     url: "jdbc:mysql://localhost:3306/student_tracker"
     username: root
     password: linda2927
+  jpa:
+    hibernate:
+      ddl-auto: create
 #  main:
 #    lazy-initialization: true
 
 logging:
   level:
     root: warn
+    org:
+      hibernate:
+        SQL: debug
+        orm:
+          jdbc:
+            bind: trace
 
 # Custom properties
 myname: EarthlyZ9
