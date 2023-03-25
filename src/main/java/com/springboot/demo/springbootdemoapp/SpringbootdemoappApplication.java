@@ -18,13 +18,13 @@ public class SpringbootdemoappApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
-          // createStudent(studentDAO);
+           createStudent(studentDAO);
           // readStudent(studentDAO);
           // queryForStudents(studentDAO);
 //			queryStudentsByLastName(studentDAO);
 //			updateStudent(studentDAO);
 //			deleteStudentById(studentDAO);
-			deleteAllStudents(studentDAO);
+//			deleteAllStudents(studentDAO);
 		};
 	}
 
