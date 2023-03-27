@@ -31,7 +31,7 @@ spring:
     password: linda2927
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
 #  main:
 #    lazy-initialization: true
 
@@ -44,6 +44,7 @@ logging:
         orm:
           jdbc:
             bind: trace
+
 
 # Custom properties
 myname: EarthlyZ9
