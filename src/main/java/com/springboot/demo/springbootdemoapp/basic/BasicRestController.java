@@ -11,11 +11,6 @@ public class BasicRestController {
 
     @GetMapping("/")
     public String sayHello() {
-        return "Hello World";
-    }
-
-    @GetMapping("/my-name")
-    public String getWorkout() {
-        return this.name;
+        return "Hello World to " + name;
     }
 }
