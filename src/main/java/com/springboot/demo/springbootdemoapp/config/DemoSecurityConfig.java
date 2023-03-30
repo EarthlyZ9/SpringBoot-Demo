@@ -33,10 +33,12 @@ public class DemoSecurityConfig {
         http.authorizeHttpRequests(configurer ->
             configurer
                 .requestMatchers(HttpMethod.GET, "/students").hasAnyRole("EMPLOYEE", "MANAGER", "ADMIN")
+                .requestMatchers(HttpMethod.GET, "/users").hasAnyRole("EMPLOYEE", "MANAGER", "ADMIN")
                 .requestMatchers(HttpMethod.GET, "/students/**").hasAnyRole("EMPLOYEE", "MANAGER", "ADMIN")
                 .requestMatchers(HttpMethod.POST, "/students").hasAnyRole("MANAGER", "ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/students/**").hasAnyRole("MANAGER", "ADMIN")
                 .requestMatchers(HttpMethod.DELETE, "/students/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/actuator/**").permitAll()
         );
 
         // use HTTP Basic authentication
