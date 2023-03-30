@@ -16,7 +16,15 @@ public class DemoSecurityConfig {
     // table: users, authorities
     @Bean
     public UserDetailsManager userDetailsManager(DataSource dataSource) {
-        return new JdbcUserDetailsManager(dataSource);
+        JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
+
+        // query users
+        jdbcUserDetailsManager.setUsersByUsernameQuery("select username, password, is_active from user where username=?");
+
+        // query roles
+        jdbcUserDetailsManager.setAuthoritiesByUsernameQuery("select username, role from user where username=?");
+
+        return jdbcUserDetailsManager;
     }
 
     // Restricting access based on roles
@@ -24,10 +32,10 @@ public class DemoSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(configurer ->
             configurer
-                .requestMatchers(HttpMethod.GET, "/students").hasRole("EMPLOYEE")
-                .requestMatchers(HttpMethod.GET, "/students/**").hasRole("EMPLOYEE")
-                .requestMatchers(HttpMethod.POST, "/students").hasRole("MANAGER")
-                .requestMatchers(HttpMethod.PUT, "/students/**").hasRole("MANAGER")
+                .requestMatchers(HttpMethod.GET, "/students").hasAnyRole("EMPLOYEE", "MANAGER", "ADMIN")
+                .requestMatchers(HttpMethod.GET, "/students/**").hasAnyRole("EMPLOYEE", "MANAGER", "ADMIN")
+                .requestMatchers(HttpMethod.POST, "/students").hasAnyRole("MANAGER", "ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/students/**").hasAnyRole("MANAGER", "ADMIN")
                 .requestMatchers(HttpMethod.DELETE, "/students/**").hasRole("ADMIN")
         );
 
